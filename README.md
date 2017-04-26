@@ -2,4 +2,4 @@
 
 Для запуска - 
 
-python editStuff.py *путь до папки*
+python editStuff.py *путь_до_папки*
