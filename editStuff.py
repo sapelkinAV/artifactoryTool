@@ -99,7 +99,7 @@ def editFolders(path):
 dir_name = os.path.realpath('./testArchieves/')
 
 if __name__ == '__main__':
-    dir_name = sys.argv[1]
+    dir_name = os.path.realpath(sys.argv[1])
     os.chdir(dir_name)
     unzipFolders(dir_name)
     editFolders(dir_name)
