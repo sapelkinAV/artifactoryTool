@@ -1,7 +1,9 @@
 import os, zipfile, shutil, glob, shutil
+import re
 
+import sys
 
-dir_name = os.path.realpath("./testArchieves")
+dir_name = os.path.realpath(sys.argv[1])
 
 
 path_to_archieve = []
@@ -33,7 +35,8 @@ def modifyBuildGradle(pathToBuildGradle):
     with open(pathToBuildGradle, "w") as file:
         for line in lines:
             if not any(filter_word in line for filter_word in stringsToDelete):
-                line = line.replace("url \"http://mvn/artifactory/releases\"", "url \"http://mvn/artifactory/public\"")
+                line = re.sub(r'url \"http://mvn/artifactory/releases\"','url \"http://mvn/artifactory/public\"',line)
+                line = re.sub(r'classpath \"ru.alfabank.gradle:as400plugin:1.0...\"','classpath \"ru.alfabank.gradle:as400plugin:1.0.49\"',line)
                 file.write(line)
 
 def editFiles():
